@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import HomePage from './components/HostPage'
+import HomePage from './components/HomePage'
 
 
 const App = () => {
