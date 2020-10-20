@@ -9,40 +9,46 @@ const Directory = ({ title, subtitle }) => {
     {
       id: 1,
       title: 'hats',
-      imageUrl: 'http://localhost:8888/hats.jpg'
+      imageUrl: 'http://localhost:8888/hats.jpg',
+      link: 'hats'
     },
     {
       id: 2,
       title: 'jackets',
-      imageUrl: 'http://localhost:8888/jackets.jpg'
+      imageUrl: 'http://localhost:8888/jackets.jpg',
+      link: ''
     },
     {
       id: 3,
       title: 'sneakers',
-      imageUrl: 'http://localhost:8888/sneakers.jpg'
+      imageUrl: 'http://localhost:8888/sneakers.jpg',
+      link: 'sneakers'
     },
     {
       id: 4,
       title: 'womens',
       imageUrl: 'http://localhost:8888/womens.jpg',
-      size: 'large'
+      size: 'large',
+      link: ''
     },
     {
       id: 5,
       title: 'mens',
       imageUrl: 'http://localhost:8888/mens.jpg',
-      size: 'large'
+      size: 'large',
+      link: ''
     },
   ])
 
   return (
     <div className='directory-menu'>
-      {sections.map(({ id, title, imageUrl, size }) => (
+      {sections.map(({ id, title, imageUrl, size, link }) => (
         <MenuItem
           key={id}
           title={title}
           imageUrl={imageUrl}
-          size={size} />
+          size={size}
+          link={link} />
       ))}
     </div>
   )
