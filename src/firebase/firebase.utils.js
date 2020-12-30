@@ -11,11 +11,35 @@ const config = {
     appId: "1:1059419038079:web:9464d99c064d8aac9b3a4a",
     measurementId: "G-S35D3BJVKY"
   }
-
-  firebase.initializeApp(config)
-
-  export const auth = firebase.auth()
+  
+  firebase.initializeApp(config);
   export const firestore = firebase.firestore()
+
+  export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if (!userAuth) return
+
+    const userRef = firestore.collection('users').doc(`${userAuth.uid}`)
+    const snapshot = await userRef.get()
+
+    if (!snapshot.exists) {
+      const { displayName, email } = userAuth
+      const createdAt = new Date()
+
+      userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalData
+      })
+      .catch(error => {
+        console.log('error creating user', error.message)
+      })
+    }
+
+    return userRef
+  }
+  
+  export const auth = firebase.auth()
 
   const provider = new firebase.auth.GoogleAuthProvider()
   provider.setCustomParameters({ prompt: 'select_account' })

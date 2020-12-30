@@ -14,9 +14,6 @@ class SignIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log('handle submit!')
-        console.log(`email:: ${this.state.email}`)
-        console.log(`password:: ${this.state.password}`)
         this.setState({
             email: '',
             password: ''
