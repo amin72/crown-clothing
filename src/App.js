@@ -9,7 +9,10 @@ import ShopPage from './pages/shop/ShopPage'
 import Header from './components/header/Header'
 import Checkout from './pages/checkout/Checkout'
 import Auth from './pages/auth/Auth'
-import { auth, createUserProfileDocument } from './firebase/firebase.utils'
+import {
+  auth,
+  createUserProfileDocument,
+} from './firebase/firebase.utils'
 import { setCurrentUser } from './redux/user/user.actions'
 import { selectCurrentUser } from './redux/user/user.selectors'
 
@@ -33,9 +36,9 @@ class App extends Component {
               ...snapshop.data()
             })
           })
-      } else {
-        setCurrentUser(userAuth)
       }
+      
+      setCurrentUser(userAuth)
     })
   }
 
@@ -63,7 +66,7 @@ class App extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 })
 
 const mapDispatchToProps = dispatch => ({
